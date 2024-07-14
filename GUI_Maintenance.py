@@ -141,7 +141,6 @@ B = ttk.Button(T1, text='บันทึก', command=save)
 B.place(x=200, y=350)
 
 
-
 ############################### Tab ดูใบแจ้งซ่อม ###############################
 #สร้าง Tree View
 header = ['TSID','ชื่อ','แผนก','อุปกรณ์','อาการเสีย','หมายเลข','เบอร์โทรผู้แจ้ง']
@@ -171,6 +170,21 @@ def update_table():
         d = list(d) #Change data Tuple format to List format
         del d[0] #Delete ID form database before preview data in report
         mtworkorderlist.insert('', 'end', values=d)
+
+############################### Tab แก้ไขข้อความ ###############################
+#เมื่อ Double Click จะเปิดหน้าแก้ไขข้อมูลเป็น Popup ขึ้นมาอีกหน้าต่าง
+def EditPage_mtworkorder(event = None):
+    GUI2 = Toplevel()
+    GUI2.title('หน้าแก้ไขข้อมูลใบแจ้งซ่อม')
+    GUI2.geometry('500x500')
+
+    GUI2.mainloop()
+
+#กำหนดให้เมื่อ Double Click (คือ Code '<Double-a>') จะใช้ฟังก์ชั่น EditPage_mtworkorder
+mtworkorderlist.bind('<Double-1>',EditPage_mtworkorder)
+
+
+
 
 #เมื่อเปิดโปรแกรมจะให้ฟังก์ชั่นอะไรทำงาน
 update_table()
