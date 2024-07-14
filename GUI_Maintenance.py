@@ -25,7 +25,7 @@ GUI = Tk()
 GUI.title('โปรแกรมซ่อมบำรุง by Gop') #ใส่ชื่อโปรแกรม
 
 #กำหนดขนาดหน้าจอของโปรแกรม แต่ถ้าอยากกำหนดว่าให้โปรแกรมแสดงตรงไหนของหน้าจอใช้ 200+20 เพื่อกำหนดระยะ x และ y
-GUI.geometry('800x600')
+GUI.geometry('1000x600+50+50')
 
 #กำหนดฟอนต์
 FONT1 = ('Angsana New', 20, 'bold')
@@ -142,7 +142,7 @@ B.place(x=200, y=350)
 
 
 
-############################### Tab 2 ############################### columns=header, show='headings', height=10
+############################### Tab ดูใบแจ้งซ่อม ###############################
 #สร้าง Tree View
 header = ['TSID','ชื่อ','แผนก','อุปกรณ์','อาการเสีย','หมายเลข','เบอร์โทรผู้แจ้ง']
 headerw = [100,150,150,200,250,150,150]
@@ -151,6 +151,11 @@ headerw = [100,150,150,200,250,150,150]
 #กำหนดการแสดงข้อมูล กำหนดคอลัมน์เป็น header, height เป็นการกำหนดว่าจะแสดงข้อมูลกี่ Row
 mtworkorderlist = ttk.Treeview(T2,columns=header,show='headings',height=20)
 mtworkorderlist.pack()
+
+#ปรับขนาดฟอนต์ และตารางให้ใหญ่ขึ้น
+style = ttk.Style()
+style.configure('Treeview.Heading', padding = (10, 10), font = ('Angsana New', 20, 'bold'))
+style.configure('Treeview', rowheight = 25, font = ('Angsana New', 15))
 
 for h, w in zip(header, headerw):
     mtworkorderlist.heading(h, text=h)
